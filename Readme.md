@@ -41,16 +41,16 @@ https://api-udec-pweb-aedec9hxbugye0am.westus3-01.azurewebsites.net/api/salud/pr
 
 ### Inicio
 
-![Inicio](inicio.png)
+![Inicio](Inicio.png)
 
 ### Clientes
 
-![Clientes](clientes.png)
+![Clientes](Clientes.png)
 
 ### Catálogo
 
-![Catálogo](catalogo.png)
+![Catálogo](Catalogo.png)
 
 ### Tickets
 
-![Tickets](tickets.png)
+![Tickets](Ticket.png)
