@@ -1,0 +1,202 @@
+﻿@page "/tickets"
+<link href="Ticket.css" rel="stylesheet" />
+
+@using Proyecto_Final.Models
+@using Proyecto_Final.Data
+@using Microsoft.EntityFrameworkCore
+@using System.Net.Http.Json
+
+@inject ApplicationDbContext Db
+@inject HttpClient Http
+
+<h3>Generar Ticket</h3>
+
+<div class="mb-3">
+
+    <label>Cliente</label>
+
+    <select @bind="clienteId" class="form-control">
+
+        <option value="0">
+            Selecciona cliente
+        </option>
+
+        @foreach (var cliente in clientes)
+        {
+            <option value="@cliente.Id">
+                @cliente.Nombre
+            </option>
+        }
+
+    </select>
+
+</div>
+
+<div class="mb-3">
+
+    <label>Producto</label>
+
+    <select @bind="productoId" class="form-control">
+
+        <option value="0">
+            Selecciona producto
+        </option>
+
+        @foreach (var producto in productos)
+        {
+            <option value="@producto.Id">
+                @producto.Nombre
+            </option>
+        }
+
+    </select>
+
+</div>
+
+<div class="mb-3">
+
+    <label>Cantidad</label>
+
+    <input type="number"
+           @bind="cantidad"
+           class="form-control" />
+
+</div>
+
+<button class="btn btn-primary"
+        @onclick="GenerarTicket">
+
+    Generar Ticket
+
+</button>
+
+@if (!string.IsNullOrEmpty(mensaje))
+{
+    <p>@mensaje</p>
+    <hr />
+
+    <h4>Historial de Tickets</h4>
+
+    <table class="table">
+
+        <thead>
+
+            <tr>
+                <th>Cliente</th>
+                <th>Fecha</th>
+                <th>Total</th>
+                <th>Estado</th>
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+            @foreach (var ticket in tickets)
+            {
+                <tr>
+
+                    <td>@ticket.Cliente?.Nombre</td>
+
+                    <td>
+                        @ticket.Fecha.ToString("dd/MM/yyyy")
+                    </td>
+
+                    <td>$@ticket.Total</td>
+
+                    <td>@ticket.Estado</td>
+
+                </tr>
+            }
+
+        </tbody>
+
+    </table>
+}
+<div class="mt-3">
+
+    <a href="/" class="btn btn-primary">
+        Volver al inicio
+    </a>
+</div>
+
+@code {
+
+    List<Cliente> clientes = new();
+
+    List<ProductoApi> productos = new();
+    List<Proyecto_Final.Models.Ticket> tickets = new();
+
+    int clienteId;
+
+    int productoId;
+
+    int cantidad = 1;
+
+    string mensaje = "";
+
+    protected override async Task OnInitializedAsync()
+    {
+        clientes = await Db.Clientes.ToListAsync();
+
+        try
+        {
+            productos = await Http.GetFromJsonAsync<List<ProductoApi>>(
+                "https://api-udec-pweb-aedec9hxbugye0am.westus3-01.azurewebsites.net/api/salud/productos"
+            ) ?? new();
+        }
+        catch (Exception ex)
+        {
+            mensaje = "Error al cargar API: " + ex.Message;
+            productos = new();
+        }
+
+        tickets = await Db.Tickets
+            .Include(t => t.Cliente)
+            .ToListAsync();
+    }
+
+    async Task GenerarTicket()
+    {
+        var producto = productos.FirstOrDefault(
+            p => p.Id == productoId
+        );
+
+        if (producto == null)
+        {
+            mensaje = "Selecciona producto";
+            return;
+        }
+
+        Proyecto_Final.Models.Ticket ticket = new()
+        {
+            ClienteId = clienteId,
+            Fecha = DateTime.Now,
+            Estado = "Pagado",
+            Total = producto.Precio * cantidad
+        };
+
+        Db.Tickets.Add(ticket);
+
+        await Db.SaveChangesAsync();
+
+        Proyecto_Final.Models.DetalleTicket detalle = new()
+        {
+            TicketId = ticket.Id,
+            ProductoApiId = producto.Id,
+            Cantidad = cantidad,
+            Precio = producto.Precio
+        };
+
+        Db.DetalleTickets.Add(detalle);
+
+        await Db.SaveChangesAsync();
+
+        tickets = await Db.Tickets
+            .Include(t => t.Cliente)
+            .ToListAsync();
+
+        mensaje = "Ticket generado correctamente 🎟️";
+    }
+
+}

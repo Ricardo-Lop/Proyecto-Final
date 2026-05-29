@@ -1,0 +1,110 @@
+﻿/* Fondo general */
+body {
+    background-color: #f4f8fc;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+/* Barra superior */
+.top-row {
+    background: #005aa7;
+    color: white;
+    border-bottom: none;
+}
+
+    .top-row h4 {
+        color: white;
+        margin: 0;
+    }
+
+/* Contenido principal */
+.content {
+    padding: 30px;
+}
+
+/* Títulos */
+h1, h2, h3, h4 {
+    color: #005aa7;
+    font-weight: 600;
+}
+
+/* Tarjetas dashboard */
+.card {
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 3px 12px rgba(0,0,0,.10);
+    transition: .3s;
+}
+
+    .card:hover {
+        transform: translateY(-3px);
+    }
+
+.card-body h2 {
+    color: #0078d7;
+    font-weight: bold;
+}
+
+/* Botones */
+.btn-primary {
+    background-color: #0078d7;
+    border-color: #0078d7;
+}
+
+    .btn-primary:hover {
+        background-color: #005aa7;
+        border-color: #005aa7;
+    }
+
+.btn-success {
+    background-color: #00a3a3;
+    border-color: #00a3a3;
+}
+
+.btn-warning {
+    background-color: #ffb300;
+    border-color: #ffb300;
+}
+
+/* Formularios */
+.form-control,
+input,
+select {
+    border-radius: 10px !important;
+    border: 1px solid #cfd8dc !important;
+    padding: 10px !important;
+}
+
+/* Tabla */
+.table {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 3px 10px rgba(0,0,0,.08);
+}
+
+    .table thead {
+        background: #005aa7;
+        color: white;
+    }
+
+    .table th {
+        padding: 15px;
+    }
+
+    .table td {
+        padding: 12px;
+        vertical-align: middle;
+    }
+
+/* Alertas */
+.alert-warning {
+    border-radius: 12px;
+    border: none;
+}
+
+/* Accesos rápidos */
+.btn {
+    border-radius: 10px;
+    font-weight: 600;
+    padding: 10px 18px;
+}

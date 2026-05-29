@@ -1,0 +1,157 @@
+﻿<link href="Clientes.css" rel="stylesheet" />
+@page "/clientes"
+
+@using Proyecto_Final.Models
+@using Proyecto_Final.Data
+@using Microsoft.EntityFrameworkCore
+
+@inject ApplicationDbContext Db
+
+<h3>Clientes</h3>
+
+<input @bind="nuevoCliente.Nombre"
+       placeholder="Nombre" />
+
+<input @bind="nuevoCliente.Telefono"
+       placeholder="Teléfono" />
+
+<input @bind="nuevoCliente.Email"
+       placeholder="Email" />
+
+<button @onclick="GuardarCliente">
+    Guardar
+</button>
+
+<hr />
+
+@if (clientes == null)
+{
+    <p>Cargando clientes...</p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Teléfono</th>
+                <th>Email</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            @foreach (var cliente in clientes)
+            {
+                <tr>
+
+                    @if (clienteEditando == cliente)
+                    {
+                        <td>
+                            <input @bind="cliente.Nombre" />
+                        </td>
+
+                        <td>
+                            <input @bind="cliente.Telefono" />
+                        </td>
+
+                        <td>
+                            <input @bind="cliente.Email" />
+                        </td>
+
+                        <td>
+
+                            <button @onclick="GuardarCliente">
+                                Guardar
+                            </button>
+
+                            <button @onclick="CancelarEdicion">
+                                Cancelar
+                            </button>
+
+                        </td>
+                    }
+                    else
+                    {
+                        <td>@cliente.Nombre</td>
+                        <td>@cliente.Telefono</td>
+                        <td>@cliente.Email</td>
+
+                        <td>
+
+                            <button @onclick="() => EditarCliente(cliente)">
+                                Editar
+                            </button>
+
+                            <button @onclick="() => EliminarCliente(cliente.Id)">
+                                Eliminar
+                            </button>
+
+                        </td>
+                    }
+
+                </tr>
+            }
+
+        </tbody>
+
+
+    </table>
+}
+<div class="mt-3">
+
+    <a href="/" class="btn btn-primary">
+        Volver al inicio
+    </a>
+</div>
+
+@code {
+    Cliente? clienteEditando = null;
+
+    List<Cliente>? clientes;
+
+    Cliente nuevoCliente = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+        clientes = await Db.Clientes.ToListAsync();
+    }
+
+    async Task GuardarCliente()
+    {
+        if (clienteEditando == null)
+        {
+            Db.Clientes.Add(nuevoCliente);
+        }
+
+        await Db.SaveChangesAsync();
+
+        clientes = await Db.Clientes.ToListAsync();
+
+        nuevoCliente = new();
+
+        clienteEditando = null;
+    }
+    async Task EliminarCliente(int id)
+    {
+        var cliente = await Db.Clientes.FindAsync(id);
+        if(cliente != null)
+        {
+            Db.Clientes.Remove(cliente);
+
+            await Db.SaveChangesAsync();
+
+            clientes = await Db.Clientes.ToListAsync();
+        }
+    }
+    void EditarCliente(Cliente cliente)
+    {
+        clienteEditando = cliente;
+    }
+
+    void CancelarEdicion()
+    {
+        clienteEditando = null;
+    }
+}

@@ -1,0 +1,73 @@
+﻿h3 {
+    color: #005aa7;
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 25px;
+}
+
+/* Área de captura */
+input {
+    border-radius: 10px;
+    border: 1px solid #cfd8dc;
+    padding: 10px;
+    margin-right: 8px;
+    min-width: 200px;
+}
+
+button {
+    border-radius: 10px;
+    font-weight: 600;
+    padding: 8px 18px;
+}
+
+/* Tabla */
+.table {
+    margin-top: 25px;
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,.08);
+}
+
+    .table thead {
+        background: #005aa7;
+        color: white;
+    }
+
+    .table th {
+        padding: 15px;
+        border: none;
+    }
+
+    .table td {
+        padding: 12px;
+        vertical-align: middle;
+    }
+
+    /* Hover de filas */
+    .table tbody tr:hover {
+        background-color: #f2f8ff;
+    }
+
+/* Botones editar */
+.btn-editar {
+    background: #0078d7;
+    color: white;
+    border: none;
+    margin-right: 5px;
+}
+
+    .btn-editar:hover {
+        background: #005aa7;
+    }
+
+/* Botones eliminar */
+.btn-eliminar {
+    background: #dc3545;
+    color: white;
+    border: none;
+}
+
+    .btn-eliminar:hover {
+        background: #b02a37;
+    }

@@ -1,0 +1,53 @@
+﻿h3 {
+    color: #005aa7;
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+/* Botones filtros */
+.btn-primary,
+.btn-success {
+    border-radius: 10px;
+    padding: 10px 20px;
+    font-weight: 600;
+}
+
+/* Tabla */
+.table {
+    margin-top: 20px;
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,.08);
+}
+
+    .table thead {
+        background: #005aa7;
+        color: white;
+    }
+
+    .table th {
+        padding: 15px;
+        border: none;
+    }
+
+    .table td {
+        padding: 12px;
+        vertical-align: middle;
+    }
+
+    .table tbody tr:hover {
+        background-color: #f2f8ff;
+    }
+
+/* Mensaje API */
+.alert-warning {
+    border-radius: 12px;
+    border: none;
+}
+
+/* Botón inicio */
+a.btn {
+    border-radius: 10px;
+}

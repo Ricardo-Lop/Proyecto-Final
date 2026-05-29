@@ -1,0 +1,63 @@
+﻿h3 {
+    color: #005aa7;
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 25px;
+}
+
+/* Formularios */
+.form-control {
+    border-radius: 10px;
+    border: 1px solid #cfd8dc;
+    padding: 10px;
+}
+
+label {
+    font-weight: 600;
+    color: #005aa7;
+    margin-bottom: 5px;
+}
+
+/* Botón principal */
+.btn-primary {
+    border-radius: 10px;
+    padding: 10px 20px;
+    font-weight: 600;
+}
+
+/* Mensajes */
+p {
+    font-size: 1rem;
+}
+
+/* Tabla historial */
+.table {
+    margin-top: 20px;
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,.08);
+}
+
+    .table thead {
+        background: #005aa7;
+        color: white;
+    }
+
+    .table th {
+        padding: 15px;
+    }
+
+    .table td {
+        padding: 12px;
+    }
+
+    .table tbody tr:hover {
+        background-color: #f2f8ff;
+    }
+
+/* Separación */
+hr {
+    margin-top: 25px;
+    margin-bottom: 25px;
+}

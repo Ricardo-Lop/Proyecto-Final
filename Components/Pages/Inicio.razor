@@ -1,0 +1,109 @@
+﻿@page "/"
+<link href="inicio.css" rel="stylesheet" />
+
+@using Proyecto_Final.Data
+@using Microsoft.EntityFrameworkCore
+
+@inject ApplicationDbContext Db
+
+<h1>🏥 Farmacia Web</h1>
+<h5>Sistema de Gestión de Farmacia</h5>
+
+<hr />
+
+<div class="row">
+
+    <div class="col-md-4">
+
+        <div class="card">
+
+            <div class="card-body">
+
+                <h5>Clientes Registrados</h5>
+
+                <h2>@totalClientes</h2>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="col-md-4">
+
+        <div class="card">
+
+            <div class="card-body">
+
+                <h5>Tickets Generados</h5>
+
+                <h2>@totalTickets</h2>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="col-md-4">
+
+        <div class="card">
+
+            <div class="card-body">
+
+                <h5>Último Ticket</h5>
+
+                <h6>@ultimoTicket</h6>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<hr />
+
+<h4>Accesos rápidos</h4>
+
+<div class="mt-3">
+
+    <a href="/clientes" class="btn btn-primary">
+        Clientes
+    </a>
+
+    <a href="/catalogo" class="btn btn-success">
+        Catálogo
+    </a>
+
+    <a href="/tickets" class="btn btn-warning">
+        Tickets
+    </a>
+
+</div>
+
+@code {
+
+    int totalClientes;
+
+    int totalTickets;
+
+    string ultimoTicket = "Sin registros";
+
+    protected override async Task OnInitializedAsync()
+    {
+        totalClientes = await Db.Clientes.CountAsync();
+
+        totalTickets = await Db.Tickets.CountAsync();
+
+        var ticket = await Db.Tickets
+            .OrderByDescending(t => t.Fecha)
+            .FirstOrDefaultAsync();
+
+        if (ticket != null)
+        {
+            ultimoTicket = ticket.Fecha.ToString("dd/MM/yyyy HH:mm");
+        }
+    }
+}
