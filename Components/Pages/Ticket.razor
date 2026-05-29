@@ -121,7 +121,6 @@
 </div>
 
 @code {
-
     List<Cliente> clientes = new();
 
     List<ProductoApi> productos = new();
@@ -196,7 +195,6 @@
             .Include(t => t.Cliente)
             .ToListAsync();
 
-        mensaje = "Ticket generado correctamente 🎟️";
+        mensaje = "Ticket generado correctamente ✅";
     }
-
 }
