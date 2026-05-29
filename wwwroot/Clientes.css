@@ -5,7 +5,6 @@
     margin-bottom: 25px;
 }
 
-/* Área de captura */
 input {
     border-radius: 10px;
     border: 1px solid #cfd8dc;
@@ -20,7 +19,6 @@ button {
     padding: 8px 18px;
 }
 
-/* Tabla */
 .table {
     margin-top: 25px;
     background: white;
@@ -44,12 +42,10 @@ button {
         vertical-align: middle;
     }
 
-    /* Hover de filas */
     .table tbody tr:hover {
         background-color: #f2f8ff;
     }
 
-/* Botones editar */
 .btn-editar {
     background: #0078d7;
     color: white;
@@ -61,7 +57,6 @@ button {
         background: #005aa7;
     }
 
-/* Botones eliminar */
 .btn-eliminar {
     background: #dc3545;
     color: white;

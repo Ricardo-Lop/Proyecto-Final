@@ -5,7 +5,6 @@
     margin-bottom: 25px;
 }
 
-/* Formularios */
 .form-control {
     border-radius: 10px;
     border: 1px solid #cfd8dc;
@@ -18,19 +17,16 @@ label {
     margin-bottom: 5px;
 }
 
-/* Botón principal */
 .btn-primary {
     border-radius: 10px;
     padding: 10px 20px;
     font-weight: 600;
 }
 
-/* Mensajes */
 p {
     font-size: 1rem;
 }
 
-/* Tabla historial */
 .table {
     margin-top: 20px;
     background: white;
@@ -56,7 +52,6 @@ p {
         background-color: #f2f8ff;
     }
 
-/* Separación */
 hr {
     margin-top: 25px;
     margin-bottom: 25px;

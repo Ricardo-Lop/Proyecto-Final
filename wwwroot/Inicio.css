@@ -1,10 +1,8 @@
-﻿/* Fondo general */
-body {
+﻿body {
     background-color: #f4f8fc;
     font-family: 'Segoe UI', sans-serif;
 }
 
-/* Barra superior */
 .top-row {
     background: #005aa7;
     color: white;
@@ -16,18 +14,15 @@ body {
         margin: 0;
     }
 
-/* Contenido principal */
 .content {
     padding: 30px;
 }
 
-/* Títulos */
 h1, h2, h3, h4 {
     color: #005aa7;
     font-weight: 600;
 }
 
-/* Tarjetas dashboard */
 .card {
     border: none;
     border-radius: 15px;
@@ -44,7 +39,6 @@ h1, h2, h3, h4 {
     font-weight: bold;
 }
 
-/* Botones */
 .btn-primary {
     background-color: #0078d7;
     border-color: #0078d7;
@@ -65,7 +59,6 @@ h1, h2, h3, h4 {
     border-color: #ffb300;
 }
 
-/* Formularios */
 .form-control,
 input,
 select {
@@ -74,7 +67,6 @@ select {
     padding: 10px !important;
 }
 
-/* Tabla */
 .table {
     background: white;
     border-radius: 12px;
@@ -96,13 +88,11 @@ select {
         vertical-align: middle;
     }
 
-/* Alertas */
 .alert-warning {
     border-radius: 12px;
     border: none;
 }
 
-/* Accesos rápidos */
 .btn {
     border-radius: 10px;
     font-weight: 600;
