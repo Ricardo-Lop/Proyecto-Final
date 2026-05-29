@@ -40,13 +40,17 @@ https://api-udec-pweb-aedec9hxbugye0am.westus3-01.azurewebsites.net/api/salud/pr
 ## Capturas de pantalla
 
 ### Inicio
-(Agregar captura)
+
+![Inicio](inicio.png)
 
 ### Clientes
-(Agregar captura)
+
+![Clientes](clientes.png)
 
 ### Catálogo
-(Agregar captura)
+
+![Catálogo](catalogo.png)
 
 ### Tickets
-(Agregar captura)
+
+![Tickets](tickets.png)
